@@ -1,0 +1,954 @@
+  * working with string, character data *
+
+String class, StringBufferClass, StringBuilderclass 
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+1.what is string ?
+String  is set /sequence of character enclosed within double quotes.
+String can be consist of any number of characters, any types of characters. String can contains(consists of) following three type of characters.
+
+1.  Alphabets or letter 
+      (A-Z, a-z)
+
+2. Digits OR numeric character
+      (0-9)
+
+3. Symbol or special character
+     (+, -, *, /, =, ?, <, " ", #, etc)
+
+4. Each charecter has ASCII value.(American standard code for infromation interchange)
+
+ASCII values of alphabates and digit are shown below :
+A=65
+B=66
+C=67...................... Z=90
+
+
+a=97
+b=98
+c=99......................z=122
+
+0=48
+1=49
+2=50
+9=57
+
+Example of string :
+1. "Ram"
+2. "Java extends from 123 of C & C++"
+3. "We are learning JAVA String"
+4. "tom48123@Gmail.com"
+5. "4059"
+
+
+* String classes*
+-----------------------------------------------------------------------------------------------------------------------------------------
+Java provides three type of string classes :
+1. String class
+2. StringBuffer class
+3. StringBuilder class
+
+all above three classes are used to create the object to stored the string (text).
+
+1. String class :
+Creates the string object in which we can store the string.
+String class contains / holds the string which are immutable.
+
+2. StringBuffer class :
+Creates an object in which we can stored the string which is in mutable format.
+
+3. StringBuilder class :
+Is used to create the object in which we can stored the string such a string are mutable.
+
+**mutable**
+ We can make the changes into the string, we can change it's particular char, we can truncket with any particular character.we can replace it, we can add new char in string etc.
+
+**immutable**
+ string are immutable it means that onces string is created we can not make any changes in such a string, we can not change/modify any individual chaaracter of string, we can not delete/truncket any any specific part of the string, we canno insert any new characters in string.
+
+
+Comparision(difference) between string class, StringBuffer class and StringBuilder class.
+-----------------------------------------------------------------------------------------------------------------------------------------
+1. After performing any operation on string -- "string class" creates separete copy of the string every time whereas  StringBuffer class  and StringBuilder class creates only one copy, does not creates seperate copy every time.
+
+2. string class can waste the main memory space  because of creating seperate copies of strings. StringBuffer class and StringBuilder class does not waste the main memory.
+
+3. String class provides large number of methods to perform various operations of strings. So that, coding becoms efficient and effective. 
+StringBuffer class and StringBuilder class does not provides too many methods.
+
+4.Working with String class becomes easy for understanding, development and efficient to use.
+StringBuffer class and StringBuilder class are less efficient.
+
+5. String class can read, contains user inputs. So that, coding becomes generalised and user friendly.
+StringBuffer class and StringBuilder class does not contains user inputs.
+
+6. String class is generally use in small program, applications. 
+StringBuffer and StringBuilder class are generally used in the development of network application, web appliction, multiuser application.
+
+7. String class does not support from multi-threading so can not be used in any thread programming.
+StringBuffer class can be use in multithreaded application in synchronous format which is safe to use and implements.
+
+8. String traversing speed of string class is slower than StringBuffer & StringBuilder class.
+
+9.  string class allows to  create the string variable , to initilize the string variable, to create the string object,to initilize the string object.
+string builder class and string buffer class allows only to initilize the string objects
+
+10. Example:
+String Name1=new String("Ananya Kale");
+StringBuffer Name2=new StringBuffer("Priyanka Kasar");
+StringBuilder Name3= new StringBuilder ("Shweta Darekar);
+
+# sample java program that shows -- how to store the string into string variable , string object , string buffer object and string builder object
+
+class String1
+{
+public static void main(String args[])
+{
+//create the string variable 
+ String x;
+ x="Shweta Darekar";
+System.out.println(x);
+
+//Initilize the String variable
+ String y="Priyanka Kasar";
+System.out.println(y);
+
+//Creating String object
+String z=new String();
+z=" Bhagyashri";
+System.out.println(z);
+
+//Initilize the String object
+String w=new String("Ananya Kale");
+System.out.println(w);
+
+// initilize the object of StringBuffer class
+StringBuffer sb1=new StringBuffer("python coding");
+System.out.println(sb1);
+
+// initilize the object of StringBuilder class
+StringBuilder sb2=new StringBuilder("Java coding");
+System.out.println(sb2);
+
+}
+}
+
+
+** Creating String variable, string object :--
+-----------------------------------------------------------------------------------------------------------------------------------------
+ The variable that is used to store the string, is know as string variables.
+
+Example :
+Refer above program.
+in above program: x and y are string variables whereas z,w,sb1,sb2 are string objects.
+y and z are objects of string class.
+sb1 is object of StringBuffer class.
+sb2 is object of StringBuilder class
+
+note -- 
+java consider every string variable as string object.
+
+
+
+
+
+1. Reading (accepeting) the string from user, key board. How strings are accepted from user,keyboard?
+-------------------------------------------------------------------------------------------------------------------------------------
+==> In java string(character/textual data) can be accepted at run-time from the user, keyboard using any one method from following three ways.
+1.using Scanner class
+2.using BufferedReader class
+3. using command line argument 
+
+Accepting the string from user using scanner class:
+next() method of scanner class is used to accept the string.
+Example:
+// program to accept one string from user
+//Using Scanner class
+import java.util.*;
+class StringOne 
+{
+public static void main(String args[])
+{
+Scanner sc= new Scanner (System.in);
+String Name ;
+System.out.println("Enter your name : ");
+Name=sc.next();
+System.out.println("\n Your good name is : "+Name);
+}
+}
+
+Accepting the string from user using BufferedReader class:
+readLine() method of BufferedReader class is used to accept the string.
+read() method of BufferedReader class is usLineed to accept the single character
+Example:
+// program to accept the string from user keyboard
+// using BufferedReader class
+ import java.io.*;
+class StringTwo
+{
+public static void main(String args[])throws IOException
+{
+BufferedReader br= new BufferedReader( new InputStreamReader(System.in));
+char ch;
+System.out.println("Enter one/single character : ");
+ch=(char)br.read();
+System.out.println("\n Entered character = "+ch);
+String str;
+System.out.println("Enter the string/text ");
+str=br.readLine();
+System.out.println("\n Entered String = "+str);
+}
+}
+  
+
+
+
+
+
+String Method :
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Java provides large number of String methods to perform various operations on Strings.
+Following are some useful methods of string class:--
+1. charAt() method
+-----------------------------------
+  This method is used to read, to extract specific single character from the string by specifing the index.
+ Syntax :
+ String.charAt(index)
+
+Example :
+//Program for charAt() method of String class
+class StringMethodDemo1
+{
+public static void main(String args[])
+{
+String x="core JAVA" ;
+System.out.println("String x="+x);
+System.out.println("First character="+x.charAt(0));
+char c;
+c=x.charAt(5);
+System.out.println("Sixth character="+c);
+}
+}
+
+2. length() method
+----------------------------------
+ This method is  used to find the length  of string ,to count number of characters in string.
+
+Syntax :
+ String.length()
+
+Example :
+//Program for length() method of String class
+class StringMethodDemo2
+{
+public static void main(String args[])
+{
+String x="core JAVA" ;
+System.out.println("String x="+x);
+System.out.println("length of string x="+x.length());
+String name="Ganesh";
+int n;
+n=name.length();
+System.out.println("Name="+name);
+System.out.println("length="+n);
+}
+}
+
+
+
+3. toUpperCase() method 
+--------------------------------------------
+4. toLowerCase() method
+--------------------------------------------
+toUpperCase() method is used to convert / display the string into uppercase.
+This method convert only lower case letter into upper case ,other characters remains  as it is.
+
+toLowerCase() method is used to convert / display the string  into lowercase.
+this method converts only the uppercase letters, other characters remains as it is. 
+
+Syntax:
+String.toLowerCase()
+String.toUpperCase()
+
+Example:
+//Program for toUpperCase() method and toLowerCase() method of String class
+class StringMethodDemo3
+{
+public static void main(String args[])
+{
+String x="core JAVA" ;
+System.out.println("String :"+x);
+System.out.println("String in upper case: "+x.toUpperCase());
+System.out.println("String in lower case: "+x.toLowerCase());
+String s1="Ganesh";
+String s2,s3;
+s2=s1.toUpperCase();
+s3=s1.toLowerCase();
+System.out.println("String s1="+s1);
+System.out.println("String s2="+s2);
+System.out.println("String s3="+s3);
+}
+}
+
+5. startsWith() method
+---------------------------------------
+6. endsWith() method
+----------------------------------------
+startsWith() method is used to check whether string starts with particular word (sub-string) or not ?
+If Yes/starts then this method returns boolean value TRUE.
+If No then this method returns FALSE.
+
+endsWith() method is used to check whether string ends with particular word (sub-string) or not ?
+If Yes (ends) then method returns logical value TRUE,else returns FALSE.
+
+Syntax:
+String.startsWith(sub-string) 
+String.endsWith(sub-string) 
+
+Example:
+//Program for starsWith() method of String class
+//Program for endsWith() method of String class
+class StringMethodDemo4
+{
+public static void main(String args[])
+{
+String str="Ram, Sham and Tom ae best friends";
+System.out.println("String: "+str);
+System.out.println(str.startsWith("Raju"));
+System.out.println(str.endsWith("friends"));
+if(str.startsWith("Ram"))
+System.out.println("Yes, String starts with Ram");
+else
+System.out.println("No, String does-not starts with Ram");
+
+if(str.endsWith("good friends"))
+System.out.println("Yes, String ends with good friends");
+else
+System.out.println("No, String does-not ends with good friends");
+}
+}
+
+
+7. equals() method
+-----------------------------------------
+8. equalsIgnoreCase() method
+------------------------------------------------------
+
+These two methods are used to check wheather two strings are exactly same (equal) or not?
+equals() method check the case of every character during comparistion and  consider the difference between uppercase and lowercase letters. 
+
+equalsIgnoreCase() method does not consider the difference between uppercase & lowercase lettersduring comparing two strings.
+It Ignores the case differences.
+Syntax:
+Stringone.equals(stringtwo)
+Stringone.equalsIgnoreCase(stringtwo)
+
+Example:
+//Progra using() method and equalsIgnoreCase() method
+class StringMethodDemo5 
+{
+public static void main(String args[])
+{
+String s1="ganesh";
+String s2="GANESH";
+String s3="Mukesh";
+System.out.println("string s1="+s1);
+System.out.println("string s2="+s2);
+System.out.println("string s3="+s3);
+
+if(s1.equals(s2))
+System.out.println("Yes, string s1 and s2 are same");
+else 
+System.out.println("No, string s1 and s2 are  not same");
+
+if(s1.equalsIgnoreCase(s2))
+System.out.println("Yes, string s1 and s2 are same");
+else 
+System.out.println("No, string s1 and s2 are  not same");
+
+if(s1.equals(s3))
+System.out.println("String s1 and s3 are equal");
+else 
+System.out.println("String s1 and s3 are not equal");
+
+if(s2.equalsIgnoreCase(s3))
+System.out.println("String s2 and s3 are equal");
+else 
+System.out.println("String s2 and s3 are not equal");
+
+}
+}
+
+
+9. contains() method
+------------------------------------
+this method is used to check whether string contains specified sub-string? 
+It checks whether particular sub-string is exists/found into other string or not  ?
+This method returns true if exists else returns false.
+
+Syntax:
+String.contains(sub-string)
+
+Example :
+//Program using contains() method
+//Program to check whether particular sub-string is exists/found in other string?
+class StringMethodDemo6
+{
+public static void main(String args[])
+{
+String str="Ram, Sham and Tom are best friends";
+System.out.println("String: "+str);
+System.out.println(str.contains("Ganesh"));
+System.out.println(str.contains("best"));
+
+if(str.contains("Sham"))
+System.out.println("Yes, String contains Sham");
+else
+System.out.println("No, String does-not contains Sham");
+
+if(str.contains("Shamkant"))
+System.out.println("Yes, String contains Shamkant");
+else
+System.out.println("No, String does-not contains Shamkant");
+
+
+}
+}
+
+
+
+
+10. compareTo() method
+--------------------------------------------
+11. compareToIgnorecase() method
+---------------------------------------------------------------
+
+These methods are used to compare two strings and returns zero or positive value or negative value.
+When both strings are exacutly same/equal then this method returns 0.
+When both strings are not same/equal and first string is greater than second string then this method return positive value.
+When both strings are not-exactly same/second string greater than first string this method return negative value.
+Positive value or negative value is nothing but --difference between ASCII values of first unmatched characters of both strings.
+compareTo() consider the difference between uppercase and lowercase letter during comparision of two strings. compareToIgnorecase() method does not consider the difference between uppercase and lowercase letter during comparision of two strings.
+
+Syntax:
+String1.compareTo(String2)
+String1.compareToIgnoreCase(String2)
+
+Example:
+//Program for compareTo() method and compareToIgnoreCase() method
+class StringMethodDemo7
+{
+public static void main(String args[])
+{
+String s1="GaneshKumar";
+String s2="GaneshKumar";
+String s3="ganeshKUMAR";
+String s4="GajabKumar";
+System.out.println("String s1: "+s1);
+System.out.println("String s2: "+s2);
+System.out.println("String s3: "+s3);
+System.out.println("String s4: "+s4);
+
+System.out.println(s1.compareTo(s2));
+System.out.println(s1.compareTo(s3));
+System.out.println(s1.compareToIgnoreCase(s3));
+System.out.println(s1.compareTo(s4));
+System.out.println(s1.compareToIgnoreCase(s4));
+}
+}
+
+
+
+12. indexOf() method
+----------------------------------------
+13. lastIndexOf() method
+--------------------------------------------
+These methods are used to find the index  of specified character or specified sub-string into the string.
+If specified character or specified sub-string is not found in string then both methods returns  -1.
+indexOf() method search the sub-string from first character upto last character.
+lastIndexOf() method search the sub-string into string from last character upto first character.
+
+Syntax:
+String.indexOf(substring)
+String.lastIndexOf(substring)
+
+Example:
+//program for indexof()method and lastIndexOf()method 
+class StringMethodDemo8
+{
+public static void main(String args[])
+{
+String x="core java  & adavance java programming";
+System.out.println("String x= "+x);
+System.out.println(x.indexOf('a'));
+System.out.println(x.lastIndexOf('a'));
+System.out.println(x.indexOf('b'));
+System.out.println(x.lastindexOf('q'));
+System.out.println(x.indexOf("java"));
+System.out.println(x.lastindexOf("java"));
+}
+}
+
+
+14. concat() method
+------------------------------------------
+15. join() method
+-------------------------------------------
+concat() method is used to concantenate / join to strings.
+join() metod is used to join more than one string together seperated by specified character (delimeter).
+join() method is used with string class such as "String. join()"
+
+Syntax:
+String1.concat(String2)
+String.join(seperator,String1,String2)
+
+Example:
+//Program using concat() method
+//Program using String.join() method
+
+class StringMethodDemo9
+{
+public static void main(String args[])
+{
+String s1="Java";
+String s2="Python";
+System.out.println(s1.concat(s2));
+String s3;
+s3=s1.concat("programming");
+System.out.println(s3);
+System.out.println(String.join("*",s1,"c++",s2));
+String str=String.join("x",s1,s2);
+System.out.println(str);
+}
+}
+
+
+16. substring() method
+---------------------------------------
+This method is used to extract specific part of the string(to read specific string slice)
+syntax:
+String.substring(start_index,end_index)
+where end_index is optional.
+If end_index is not specified then java return the substring upto the last character.
+// program using substring method
+class StringMethodDemo10
+{
+public static void main(String args[])
+{
+String s="Computer Engineering";
+System.out.println("String: "+s);
+System.out.println(s.substring(2,6));
+System.out.println(s.substring(9,17));
+String x=s.substring(9,17);
+System.out.println(x);
+System.out.println(s.substring(9));
+
+}
+}
+
+
+
+17. split() method
+-----------------------------------
+This method is used to split (to distrubute) the string into array of sub-string, seperated by specified a delimeter(seperator).
+Syntax:
+String.split(seperator)
+
+Example:
+//program using Split() method
+class StringMethodDemo11
+{
+public static void main(String[] args)
+{
+String str="java include core java and advanced java";
+System.out.println("String x= "+str);
+String x[]=str.split(" ");
+System.out.println("Result after split by blank space ");
+for(int i=0;i<x.length;i++)
+{
+System.out.println(x[i]);
+}
+String y="Ramxshamxtomxganeshxsuresh ";
+String w[]=y.split("x");
+System.out.println("\n String y= "+y);
+System.out.println("String y: result after split by x:");
+for(int i=0;i<w.length;i++)
+{
+System.out.println(w[i]);
+}
+}
+}
+
+
+18. valueOf() method 
+------------------------------------
+19. toString() method
+------------------------------------
+ These methods are used to convert the numaric value(integer,float,double,etc) into string fromat.
+valueOf() method : can convert any type of numeric value into string format. It can convert integer,float,double,etc.type of values into string format valueOf () method is used with String class such as: String.valueOf().
+toString() method supported by wrapper classes like integer,float,double to convert integer number into string format. toString() method is used as: Integer.toString()
+to convert the float value into string format.toString() method is used as : Float.toString ()
+to convert the double value into string format toString () method is used as : Double.toString()
+
+Syntax:
+String.valueOf(numeric_value)
+wrapperclass_name.toString(numeric_value)
+
+Example:
+//java program using toString() method and valueOf() method
+class StringMethodDemo12
+{
+public static void main(String args[])
+{
+
+String x="Ganesh";
+System.out.println("String x= "+x);
+System.out.println("length of string x is : "+x.length());
+int n=1777;
+System.out.println("Number n= "+n);
+System.out.println("length of n is : "+String.valueOf(n).length());
+String y=Integer.toString(n);
+System.out.println("length of number n  is : "+y.length());
+}
+}
+
+
+20. trim() method
+--------------------------------
+ This method is used to truncket (remove) the leading (leftmost) & trailing(rightmost) blankspaces from the string.
+
+Syntax:
+String.trim()
+
+Example:
+//Program using trim() method
+class StringMethodDemo13
+{
+public static void main(String args[])
+{
+String x=" Ganesh ";
+String y="  Ganesh";
+String z="Ganesh  ";
+String w="  Ganesh  ";
+
+System.out.println("length of string x= "+x.length());
+System.out.println("length of string y= "+y.length());
+System.out.println("length of string z= "+z.length());
+System.out.println("length of string w= "+w.length());
+String s1=x.trim();
+String s2=y.trim();
+String s3=z.trim();
+String s4=w.trim();
+System.out.println("After trimming:");
+System.out.println("length of string s1= "+s1.length());
+System.out.println("length of string s2= "+s2.length());
+System.out.println("length of string s3= "+s3.length());
+System.out.println("length of string s4= "+s4.length());
+}
+}
+
+
+21. replace() method
+------------------------------------
+22. replaceFirst() method
+-------------------------------------
+23. replaceAll() method
+-------------------------------------
+replace() method is used to replace as all occurances of particular character by another character of the string.
+replaceFirst() method is used to replace only the first occurance  of particular first string by other sub string of the string.
+replaceAll() method is used to replace all occurances of particular sub string by another sub string from the string.
+
+Syntax:
+String.replace(character1,character2)
+String.replaceFirst(substring1,substring2)
+String.replaceAll(substring1,substring2)
+
+Example:
+// Program using repalce() method
+//Program using replaceFirst() method
+//Program using replaceAll() method
+
+class StringMethodDemo14
+{
+public static void main(String args[])
+{
+String s="ram, sham, ramesh, jayram are friends";
+System.out.println("String :"+s);
+System.out.println("Result after replace character a by x");
+System.out.println(s.replace('a','x'));
+String x=s.replace('a','x');
+System.out.println(x);
+System.out.println("After replaceFirst(), ram by ganesh:");
+System.out.println(s.replaceFirst("ram","ganesh"));
+System.out.println("After replaceAll(), ram by tom");
+System.out.println(s.replaceAll("ram","tom"));
+}
+}
+
+
+24. isEmpty() method
+------------------------------------
+this method is used to check whether particular string is empty or not ?
+This method produce boolean value true when string is empty, else produce false.
+
+Syntax:
+String.isEmpty()
+
+Example:
+// program using isEmpty() method
+class StringMethodDemo15
+{
+public static void main(String args[])
+{
+String s1="";
+String s2="  ";
+String s3="java";
+System.out.println(s1.isEmpty());
+System.out.println(s2.isEmpty());
+System.out.println(s3.isEmpty());
+
+}
+}
+
+
+
+25. copyValueOf() method
+--------------------------------------
+this method is used to convert, concate all characters of charater array together and forms/builds a single string.
+
+Syntax:
+String.copyValueOf(character_array)
+
+Example:
+// program using copyValueOf() method
+class StringMethodDemo16
+{
+public static void main(String args[])
+{
+char x[]={'G','a','n','e','s','h'};
+System.out.println("Character array elements are:");
+System.out.println(x[0]);
+System.out.println(x[1]);
+System.out.println(x[2]);
+System.out.println(x[3]);
+System.out.println(x[4]);
+System.out.println(x[5]);
+String s= String.copyValueOf(x);
+System.out.println("String: "+s);
+}
+}
+
+
+26. toCharArray() method
+------------------------------------------
+27. getChars() method
+---------------------------------------
+both the method are used to convert the string into character array.
+to CharArray() method converts the complete string into character array.
+getChars() method can convert the complete string or specific part of the string into character array.
+toCharArray() method does not have any parameter.
+getChars() method has four parameter such as-
+1.startindex of string
+2.end index of string
+3.name of character array
+4.start index of character array
+getChars() method convert the particular part of the string whose start index and end index are specified.
+if start index of character array is zero(0)
+then store the converted character array at zero index position.if it is 5 then first four index position remains as is it and converted character array stores statring form index five (5) of character array.
+
+Syntax:
+Char[] ArrayName=String.toCharArray()
+String.getChars(start_index,end_index,char_arrayname,array_start_index)
+
+Example:
+//program for toCharArray() method
+//program for getChars() method
+
+class StringMethodDemo17
+{
+public static void main(String args[])
+{
+//demo of toChararray() method
+String str="Ganesh";
+System.out.println("String: "+str);
+char a[]=str.toCharArray();
+System.out.println("Character array a is: ");
+for(int i=0;i<a.length;i++)
+{
+System.out.println(a[i]);
+}
+//demo of getChars() method
+String mystr="Core Java";
+System.out.println("\n string: "+mystr);
+char b[]=new char[9];
+mystr.getChars(0,9,b,0);
+System.out.println("Character array b is: ");
+for(int i=0;i<b.length;i++)
+{
+System.out.println(b[i]);
+}
+char c[]=new char[4];
+mystr.getChars(5,9,c,0);
+System.out.println("Character array c is: ");
+for(int i=0;i<c.length;i++)
+{
+System.out.println(c[i]);
+}
+}
+}
+
+
+
+Methods of StringBuffer class and StringBuilder class
+----------------------------------------------------------------------------------
+ StringBuffer class and StringBuilder class provides various methods.
+some useful methods are discussed below- 
+1. append() method
+2. insert() method
+3. delete(0 method
+4. replace() method
+5. reverse() method
+
+1. append() method
+------------------------------
+This method is used to append the new String to the end of existing String.
+append() method can work on only those Strings that are created using Stringbuffer class or StringBuilder class.
+append() method cannot work on Strings of "String class".
+
+syntax:
+String1.append(String2) 
+
+Example:
+// program using append() method
+class StringMethodDemo18
+{
+ public static void main(String args[])
+ {
+    StringBuffer sb1=new StringBuffer("Basic Java");
+    System.out.println("String sb1: "+sb1);
+    sb1.append("Programming");
+    System.out.println(" After append(),String sb1 is : "+sb1);
+    StringBuilder sb2=new StringBuilder("Adavnced Java");
+    StringBuilder sb3=new StringBuilder("Coding");
+   System.out.println("String sb2: "+sb2);
+   System.out.println("String sb3: "+sb3);
+    sb2.append(sb3);
+    System.out.println(" After append(),String sb2 is : "+sb2);
+    
+}
+}
+
+
+2. insert() method
+-----------------------------
+This method is used to insert the new String into existing String at specified index.
+insert() method can work on only those Strings that are created using Stringbuffer class or StringBuilder class.
+insert() method cannot work on Strings of "String class".
+
+syntax:
+String1.insert(index,string2)
+
+Example:
+// program using insert() method
+class StringMethodDemo19
+{
+ public static void main(String args[])
+ {
+    StringBuffer sb1=new StringBuffer("Basic Java");
+    System.out.println("String sb1: "+sb1);
+    sb1.insert(5,"Programming");
+    System.out.println(" After insert(),String sb1 is : "+sb1);
+    StringBuilder sb2=new StringBuilder("Adavnced Java");
+    StringBuilder sb3=new StringBuilder("Coding");
+   System.out.println("String sb2: "+sb2);
+   System.out.println("String sb3: "+sb3);
+    sb2.insert(8,sb3);
+    System.out.println(" After insert(),String sb2 is : "+sb2);
+    
+}
+}
+
+
+3. delete() method
+------------------------------
+This method is used to delete the specific part of the string, starting from start-index upto end-index .
+delete() method can work on only those Strings that are created using Stringbuffer class or StringBuilder class.
+delete() method cannot work on Strings of "String class".
+
+syntax:
+String.delete(start-index,end-index)
+
+Example:
+// program using delete() method
+class StringMethodDemo20
+{
+ public static void main(String args[])
+ {
+    StringBuffer sb1=new StringBuffer("Basic Java");
+    System.out.println("String sb1: "+sb1);
+    sb1.delete(3,8);
+    System.out.println(" After delete(),String sb1 is : "+sb1);
+    StringBuilder sb2=new StringBuilder("Adavnced Java");
+   System.out.println("String sb2: "+sb2);
+    sb2.delete(5,11);
+    System.out.println(" After delete(),String sb2 is : "+sb2);
+    
+}
+}
+
+
+4.replace() method
+------------------------------
+This method is used to replace specific part ( from start-index upto end-index) of string by another string.
+replace() method can work on only those Strings that are created using Stringbuffer class or StringBuilder class.
+replace() method cannot work on Strings of "String class".
+
+syntax:
+String1.replace(start-index,end-index,String2)
+
+Example:
+// program using replace() method
+class StringMethodDemo21
+{
+ public static void main(String args[])
+ {
+    StringBuffer sb1=new StringBuffer("Basic Java");
+    System.out.println("String sb1: "+sb1);
+    sb1.replace(1,4,"python");
+    System.out.println(" After replace(),String sb1 is : "+sb1);
+    StringBuilder sb2=new StringBuilder("Adavnced Java");
+   System.out.println("String sb2: "+sb2);
+    sb2.replace(9,13,"c++");
+    System.out.println(" After replace(),String sb2 is : "+sb2);
+    
+}
+}
+
+5. reverse() method
+------------------------------
+This method is used to reverse the string .
+reverse() method can work on only those Strings that are created using Stringbuffer class or StringBuilder class.
+reverse() method cannot work on Strings of "String class".
+
+syntax:
+String.reverse()
+
+Example:
+// program using reverse() method
+class StringMethodDemo22
+{
+ public static void main(String args[])
+ {
+    StringBuffer sb1=new StringBuffer("Java");
+    System.out.println("String sb1: "+sb1);
+    sb1.reverse();
+    System.out.println(" After reverse(),String sb1 is : "+sb1);
+    StringBuilder sb2=new StringBuilder("python");
+   System.out.println("String sb2: "+sb2);
+    sb2.reverse();
+    System.out.println(" After reverse(),String sb2 is : "+sb2);
+    
+}
+}
+																 

@@ -1,0 +1,241 @@
+JDBC
+---------
+
+What is JDBC?
+----------------------
+JDBC stands for: Java DataBase Connectivity
+JDBC is Java API (Application Program Interface) that 
+consists of set of classes and interfaces, that helps Java Programs, applications to communicate with databases and perform several database operations.
+JDBC allows Java programs to connect to a database, run queries, retrieve, and manipulate data. 
+JDBC allows to, eshtablish the connection and works with any relational databases like MySQL, Oracle, PostgreSQL, and more.
+
+
+JDBC Components:
+-------------------------------
+There are generally 4 main components of JDBC through which it can interact with a database. They are as mentioned below: 
+
+1. JDBC API
+It provides various methods and interfaces for easy communication with the database. It includes two key packages:
+
+1. java.sql: This package, is the part of Java Standard Edition (Java SE) , which contains the core interfaces and classes for accessing and processing data in relational databases. 
+It also provides essential functionalities like establishing connections, executing queries, and handling result sets
+2. javax.sql: This package is the part of Java Enterprise Edition (Java EE) , which extends the capabilities of java.sql by offering additional features like connection pooling, statement pooling, and data source management.
+It also provides a standard to connect a database to a client application.
+
+2. JDBC Driver Manager
+Driver manager is responsible for loading the correct database-specific driver to establish a connection with the database. 
+It manages the available drivers and ensures the right one is used to process user requests and interact with the database.
+
+3. JDBC Test Suite
+It is used to test the operation(such as insertion, deletion, updating) being performed by JDBC Drivers.
+
+4. JDBC Drivers
+JDBC drivers are client-side adapters (installed on the client machine, not on the server) that convert requests from Java programs to a protocol that the DBMS can understand. 
+There are 4 types of JDBC drivers:
+
+Type-1 driver or JDBC-ODBC bridge driver
+Type-2 driver or Native-API driver (partially java driver)
+Type-3 driver or Network Protocol driver (fully java driver)
+Type-4 driver or Thin driver (fully java driver) - It is a widely used driver. The older drivers like (JDBC-ODBC) bridge driver have been deprecated and no longer supported in modern versions of Java.
+
+JDBC Classes and Interfaces
+----------------------------------------------
+JDBC provides set of predefined classes and interfaces that are used to load/register the drivers, to eshtablish the database connection, to perform various DDL and DML operations through Java Programs, applications.
+Following are list of JDBC Classes and Interfaces:
+
+1. DriverManager class: 
+Manages JDBC drivers and establishes database connections.
+2. Connection interface:
+Represents a session with a specific database.
+3. Statement interface:
+Used to execute static SQL queries.
+4. PreparedStatement interface:
+Precompiled SQL statement, used for dynamic queries with parameters.
+5. CallableStatement interface:
+Used to execute stored procedures in the database.
+6. ResultSet interface:
+Represents the result set of a query, allowing navigation through the rows.
+7. SQLException class:
+Handles SQL-related exceptions during database operations.
+
+
+JAVA - ORACLE CONNECTION STEPS:
+----------------------------------------------------------
+
+Before eshtablishing the connection, between Java and Oracle, first check whether needed drivers are already installed in your Computer(Laptop)?
+
+Using Java's JDBC component, we can eshtablish the connection(bridge) between JAVA and ORACLE, through following four steps: 
+
+Step No.1 - Import JDBC(SQL) Package - 
+To eshtablish the connection between Java and Oracle, JDBC provides set of classes, interfaces and drivers. All such predefined classes, interfaces and drivers are stored into the package "Java.sql". 
+So, before eshtablishing the connection, import the package java.sql as -
+import java.sql.*;
+
+
+Step No.2 - Load, Register the JDBC Drivers - 
+This step requests to JVM to load the needed JDBC drivers into computer memory, so it can fulfill your JDBC requests. 
+Using Class.forName(), we can register the drivers in following format-
+try {
+   Class.forName("oracle.jdbc.driver.OracleDriver");
+}
+catch(ClassNotFoundException ex) {
+   System.out.println("Error: unable to load driver class!");
+   System.exit(1);
+}
+where "Class" is Pre-Defined JDBC class and "forName()" is Pre-Defined Method of Class.
+"oracle.jdbc.driver.OracleDriver"  is name of JDBC driver, that needs to register, load into memory.
+
+Step No.3 - Database URL Formulation (Open a Connection to a Database) -
+Step No.4 - Eshtablish the Connection -
+Using "Connection" class, and "DriverManager" class, we can eshtablish the connection between Java and Oracle.   
+Connection class allows to eshtablish the connection with formulated Oracle Database URL. 
+Connection class object is created as -
+Connection con;
+DriverManager class and its getConnection() method sets, formulates the Oracle database URL, Oracle User and Oracle Password.
+
+Syntax of formulating database url- 
+DriverManager.getConnection("database url","user-name","password")
+where "database url" represents the address of Oracle Database, that consist of six parameters seperated by colon symbol, as shown below - 
+"jdbc:oracle:thin:@hostname:port Number:databaseName"
+Breakdown of the Database URL components:
+jdbc:oracle:thin
+This is the standard prefix indicating that the connection will use the Oracle Thin JDBC driver. The Thin driver is a pure Java driver. 
+
+@hostname
+This represents the hostname or IP address of the server where the Oracle database is running.
+
+portNumber
+This specifies the port number on which the Oracle database listener is listening for incoming connections. The default port for Oracle is typically 1521.
+
+databaseName
+This refers to the Oracle System Identifier (SID) of the specific database instance you want to connect to on the server.
+It is generally "XE" or "ORL".
+
+Example of formulating database url - 
+DriverManager.getConnection("jdbc:odbc:thin:@localhost:1521:XE", "system", "tiger");
+
+Example of eshtablishing the connection-
+try{  
+ Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","tiger");  
+}
+ catch(SQLException e)
+{
+ System.out.println("Problems during Eshtablishing the Connection");
+}
+
+Note -
+1. After Eshtablish the Connection and after performing several operations on Oracle Database Tables, before closing the program, it is very necessary to close the connection such as -
+try{  
+     con.close();
+}
+ catch(SQLException e)
+{
+ System.out.println("Problems during Closing the Connection");
+}
+
+Example Program for Java - Oracle Connection:
+-------------------------------------------------------------------------
+Following Program eshtablish the connection between Java and Oracle.
+Following Program also displays the message whether connection will be eshtablished successfully or not?
+Program File Name: Test_Connection.java
+import java.sql.*;  
+class Test_Connection{  
+public static void main(String args[])
+{  
+  try{  
+ Class.forName("oracle.jdbc.driver.OracleDriver");  
+
+ Connection con=DriverManager.getConnection(  
+"jdbc:oracle:thin:@localhost:1521:xe","system","tiger");  
+ System.out.println("Connection made successfully");
+
+con.close();  
+}
+ catch(ClassNotFoundException ex) {
+   System.out.println("Error: unable to load driver class!");
+   System.exit(1);
+}
+ catch(SQLException e)
+{
+ System.out.println("Problems during Eshtablishing the Connection");
+}
+ }  
+}  
+
+
+JDBC Statements
+---------------------------
+JDBC provides three types of statements to interact with the database and execute the queries:
+
+1. Statement
+2. Prepared Statement
+3. Callable Statement
+
+
+Working with: Statement interface
+----------------------------------------------------
+(Sending request from Java towards Oracle)
+--------------------------------------------------------------------
+How to execute static queries in Oracle from Java programs?
+----------------------------------------------------------------------------------------------
+
+A Statement interface is used for executing static SQL statements at runtime.
+
+How to use Statement interface for executing the static queries is shown below:
+
+Syntax:
+Statement object-name = con.createStatement();
+where "con" is Connection object/reference.
+
+Example:
+Statement stmt = con.createStatement();
+
+Once the Statement object is created, there are three ways to execute it:
+
+1. execute(String SQL): 
+It is used to execute any SQL statements (like SELECT, INSERT, UPDATE or DELETE). If the ResultSet object is retrieved, then it returns true else false is returned.
+2. executeUpdate(String SQL): 
+It is used to execute SQL statements (like INSERT, UPDATE or DELETE). It returns the number of rows affected by the SQL statement.
+3. executeQuery(String SQL): 
+It is used to execute the SELECT query. It returns a ResultSet object that contains the data retrieved by the query.
+
+Examples:
+stmt.execute("insert into students values(1,'Ram',12000)");
+stmt.executeUpdate("insert into students values(1,'Ram',12000)");
+ResultSet rs=stmt.executeQuery("select * from students");
+
+
+Working with: PreparedStatement interface
+------------------------------------------------------------------
+(Sending request from Java towards Oracle and receiving the results)
+-----------------------------------------------------------------------------------------------------------
+How to execute dynamic queries in Oracle from Java programs?
+---------------------------------------------------------------------------------------------------
+
+PreparedStatement interface is used for executing dynamic SQL statements at runtime.
+PreparedStatement represents a precompiled SQL statement that can be executed multiple times.
+PreparedStatement accepts parameterized SQL queries, with ? as placeholders for parameters, which can be set dynamically.
+
+How to use PreparedStatement interface for executing the dynamic queries is shown below:
+Syntax:
+PreparedStatement object-name = con.prepareStatement(dynamic-query with ? prefix);
+where "con" is Connection object/reference.
+
+Example:
+PreparedStatement ps = con.prepareStatement("insert into students values(?,?,?)");
+
+Using setInt(), setFloat(), setDouble(), setString(), setDate(), setTime(), etc. methods, we can set the values of variables in place of ?.
+
+Once the PreparedStatement object is created, there are three ways to execute it: 
+
+1. execute(): 
+This returns a boolean value and executes a static SQL statement that is present in the prepared statement object.
+2. executeQuery(): 
+This returns a ResultSet from the current prepared statement.
+3. executeUpdate(): 
+This returns the number of rows affected by the DML statements such as INSERT, DELETE, and more that is present in the current Prepared Statement.
+
+Examples:
+ps.execute();
+ps.executeUpdate();
+ResultSet rs = ps.executeQuery();
